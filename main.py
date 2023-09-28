@@ -67,8 +67,8 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  #check if message starts with a command '$'
-  if message.content.startswith('$greet'):
+  #check if message starts with a command '/'
+  if message.content.startswith('/greet'):
     channel = message.channel
     await channel.send('say "hello" or dont idc')
 
@@ -103,30 +103,30 @@ async def on_message(message):
     if any(word in msg for word in sad_words):
       await message.channel.send(random.choice(options))
 
-  if msg.startswith("$new"):  #we want whatever texts comes after
-    unhelpful_message = msg.split("$new ", 1)[1]
+  if msg.startswith("/new"):  #we want whatever texts comes after
+    unhelpful_message = msg.split("/new ", 1)[1]
     # ^ splits array into 2 and gets 2nd element
     update_unhelpful(unhelpful_message)
     await message.channel.send("New Unhelpful Message Added.")
 
-  if msg.startswith("$del"):
+  if msg.startswith("/del"):
     unhelpful = []  #if theres not encouragements it returns empty list/arr
     if "unhelpful" in db.keys():
-      index = int(msg.split("$del", 1)[1])
+      index = int(msg.split("/del", 1)[1])
       delete_unhelpful(index)
       unhelpful = db["unhelpful"]
     await message.channel.send(unhelpful)
 
-  if msg.startswith("$list"):
+  if msg.startswith("/list"):
     unhelpful = []
     if "unhelpful" in db.keys():
       unhelpful = db["unhelpful"]
     await message.channel.send(unhelpful)
 
-  if msg.startswith("$responding"):
-    value = msg.split("$responding ", 1)[1]
+  if msg.startswith("/responding"):
+    value = msg.split("/responding ", 1)[1]
 
-    if value.lower() == "true":
+    if value.lower() == "on":
       db["responding"] = True
       await message.channel.send("Responding is on.")
     else:
