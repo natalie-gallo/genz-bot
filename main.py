@@ -7,14 +7,11 @@ from keep_alive import keep_alive
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)  #connection to discord
 
-sad_words = [
-  "depressed", "depression", "sad", "tired", "suicide", "suicidal", "kms",
-  "kill myself"
-]
+sad_words = ["depressed", "depression", "sad", "tired"]
 
 starter_unhelpful = [
-  "aren't we all", "me too dawg", "damn bro", "same", "deada--", "twins!",
-  "so true", "you need help...but same", "get help"
+  "aren't we all", "me too dawg", "damn bro", "same", "twins!", "so true",
+  "you need help...but same", "get help"
 ]
 
 #updates 1
@@ -31,7 +28,7 @@ if "responding" not in db.keys():
 manifesting = [
   "manifesting == mentally ill??", "manifesting clear skin",
   "manifesting happiness", "manifesting bank *cha ching*", "you need help",
-  "in the words of britney spears, 'you better work b---h'"
+  "stan loona for clear skin"
 ]
 
 
@@ -87,28 +84,9 @@ async def on_message(message):
   if message.content.startswith('/manifest'):
     await message.channel.send(random.choice(manifesting))
 
-  #update 2/3/23
-  #bug- .lower().replace triggered with anything that has the word in it (hiking, working, etc)
-  if 'cock' in message.content.lower().replace(' ', ''):
-    await message.channel.send(
-      'slurp that dick til it cum, smack my ass like a drum')
-
-  if 'dick' in message.content.lower().replace(' ', ''):
-    await message.channel.send(
-      'lick lick lick lick (i lick) i wanna eat yo dick')
-
+  #note- .lower().replace triggered with anything that has the word in it (hiking, working, etc)
   if 'sus' in message.content.lower().replace(' ', ''):
     await message.channel.send('sussy baka *snifffff*')
-
-  if 'blow' in message.content.lower().replace(' ', ''):
-    await message.channel.send('BOOM')
-
-  if 'bomb' in message.content.lower().replace(' ', ''):
-    await message.channel.send('BOOM')
-
-  if 'phone' in message.content.lower().replace(' ', ''):
-    await message.channel.send(
-      'STOP TELEPHONING ME-EH EH EH EH EH EH EH EH EH EH')
 
   if 'yippee' in message.content.lower().replace(' ', ''):
     await message.channel.send('yippee!')
@@ -116,7 +94,6 @@ async def on_message(message):
   msg = message.content
   if any(word in msg for word in rizz_words):
     await message.channel.send(random.choice(starter_rizz))
-  #end update 2/3/23
 
   if db["responding"]:
     options = starter_unhelpful
