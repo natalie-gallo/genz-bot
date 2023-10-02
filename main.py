@@ -7,7 +7,7 @@ from keep_alive import keep_alive
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)  #connection to discord
 
-sad_words = ["depressed", "depression", "sad", "tired"]
+sad_words = ["depressed", "depression", "sad", "tired", "stressed"]
 
 starter_unhelpful = [
   "aren't we all", "me too dawg", "damn bro", "same", "twins!", "so true",
